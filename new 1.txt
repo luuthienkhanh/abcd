@@ -1,0 +1,46 @@
+qmake 
+=> makefile
+
+make
+=> binary
+
+#ifndef _SIZE_T
+#define _SIZE_T
+typedef __kernel_size_t         size_t;
+#endif
+
+
+irqreturn_t/
+
+mrq=host->mrq
+
+sh_mmcif_data_trans
+
+http://www-numi.fnal.gov/offline_software/srt_public_context/WebDocs/Errors/unix_system_errors.html
+
+set number
+host->wait_for = MMCIF_WAIT_FOR_MREAD;
+
+1/ //tmp           desc = dmaengine_prep_slave_sg(chan, sg, ret,
+//tmp                   DMA_DEV_TO_MEM, DMA_PREP_INTERRUPT | DMA_CTRL_ACK);
+
+2/ //tmp   if (!data->sg_len || !data->sg->length)
+//tmp           return;
+
+3/ //tmp   BUG_ON(host->sg_blkidx > data->sg->length);
+
+
+sh_mmcif_request_dma_one(struct sh_mmcif_host *host,
+                         struct sh_mmcif_plat_data *pdata,
+                         enum dma_transfer_direction direction)
+{
+        struct dma_slave_config cfg;
+        struct dma_chan *chan;
+        unsigned int slave_id;
+        struct resource *res;
+        dma_cap_mask_t mask;
+        int ret;
+
+        dma_cap_zero(mask);
+        dma_cap_set(DMA_SLAVE, mask);
+
